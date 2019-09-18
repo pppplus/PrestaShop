@@ -783,11 +783,11 @@ class ProductCore extends ObjectModel
                     array('position' => $i),
                     '`id_category` = ' . (int) $id_category . ' AND `id_product` = ' . (int) $result[$i]['id_product']
                 );
-                $return &= Db::getInstance()->execute(
+                /* $return &= Db::getInstance()->execute(
                     'UPDATE `' . _DB_PREFIX_ . 'product` p' . Shop::addSqlAssociation('product', 'p') . '
                     SET p.`date_upd` = "' . date('Y-m-d H:i:s') . '", product_shop.`date_upd` = "' . date('Y-m-d H:i:s') . '"
                     WHERE p.`id_product` = ' . (int) $result[$i]['id_product']
-                );
+                );*/
             }
         } else {
             $result = Db::getInstance()->executeS('
@@ -803,13 +803,13 @@ class ProductCore extends ObjectModel
                 '`id_category` = ' . (int) $id_category . ' AND `position` > ' . (int) $position
             );
 
-            for ($i = 0; $i < $total; ++$i) {
+            /* for ($i = 0; $i < $total; ++$i) {
                 $return &= Db::getInstance()->execute(
                     'UPDATE `' . _DB_PREFIX_ . 'product` p' . Shop::addSqlAssociation('product', 'p') . '
                     SET p.`date_upd` = "' . date('Y-m-d H:i:s') . '", product_shop.`date_upd` = "' . date('Y-m-d H:i:s') . '"
                     WHERE p.`id_product` = ' . (int) $result[$i]['id_product']
                 );
-            }
+            }*/
         }
 
         return $return;
